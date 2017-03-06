@@ -14,11 +14,10 @@ ram_usage=`free -m | head -2 | tail -1 | awk {'print$3'}`
 ram_total=`free -m | head -2 | tail -1 | awk {'print$2'}`
 inode=`df -i / | head -2 | tail -1 | awk {'print$5'}`
 html="Server-Health-Report-`hostname`-`date +%y%m%d`-`date +%H%M`.html"
-email_add="change it to yours"
-#redirecting details of disk-space usage to a text file.
+email_add="change this to yours"
 for i in `ls /home`; do du -sh /home/$i/* | sort -nr | grep G; done > /tmp/dir.txt
-
-#Generating HTML file by echoing HTML tags.
+#Generating HTML file
+echo "<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">" >> $html
 echo "<html>" >> $html
 echo "<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">" >> $html
 echo "<body>" >> $html
@@ -73,7 +72,7 @@ echo "<td><center>$inode</center></td>" >> $html
 echo "</tr>" >> $html
 echo "</tbody>" >> $html
 echo "</table>" >> $html
-echo "<h2>Culprit Directories (Eating up disk space) : </h2>" >> $html
+echo "<h2>Culprit Directories(Eating up disk space) : </h2>" >> $html
 echo "<br>" >> $html
 echo "<table class="pure-table">" >> $html
 echo "<thead>" >> $html
@@ -83,7 +82,6 @@ echo "<th>Name</th>" >> $html
 echo "</tr>" >> $html
 echo "</thead>" >> $html
 echo "<tr>" >> $html
-#looping through the text data contained inside /tmp/dir.txt.
 while read size name;
 do
   echo "<td>$size</td>" >> $html
@@ -96,4 +94,4 @@ echo "</body>" >> $html
 echo "</html>" >> $html
 
 #Sending Email to the user
-cat $html | mail -s "`hostname` - Daily System Health Report. PFA the file." $email_add
+cat $html | mail -s "`hostname` - Daily System Health Report" -a "MIME-Version: 1.0" -a "Content-Type: text/html" -a "From: Shashank Srivastava <root@shashank.com>" $email_add
