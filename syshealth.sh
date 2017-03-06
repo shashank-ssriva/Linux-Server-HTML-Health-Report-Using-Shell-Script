@@ -73,7 +73,7 @@ echo "<td><center>$inode</center></td>" >> $html
 echo "</tr>" >> $html
 echo "</tbody>" >> $html
 echo "</table>" >> $html
-echo "<h2>Culprit Directories : </h2>" >> $html
+echo "<h2>Culprit Directories (Eating up disk space) : </h2>" >> $html
 echo "<br>" >> $html
 echo "<table class="pure-table">" >> $html
 echo "<thead>" >> $html
