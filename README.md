@@ -8,4 +8,4 @@ SysAdmins continuoulsly need to monitor their infrastructure & while, there are 
 Just download the script & make it executable using ``chmod +x syshealth.sh``. Now you can either execute it using ``./syshealth.sh`` or put it inside a CRON job.
 
 ## Additional notes
-This script also explains how HTML tags can be used inside a shell script. You can modify it to suit your needs.
+This script also explains (*I mean, along-with having the script to perform the intended tasks, this script also serves to demonstrate how tags can be used*) how HTML tags can be used inside a shell script. You can modify it to suit your needs.
