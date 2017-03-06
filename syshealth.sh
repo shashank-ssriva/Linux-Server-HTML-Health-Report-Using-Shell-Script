@@ -15,9 +15,10 @@ ram_total=`free -m | head -2 | tail -1 | awk {'print$2'}`
 inode=`df -i / | head -2 | tail -1 | awk {'print$5'}`
 html="Server-Health-Report-`hostname`-`date +%y%m%d`-`date +%H%M`.html"
 email_add="change it to yours"
+#redirecting details of disk-space usage to a text file.
 for i in `ls /home`; do du -sh /home/$i/* | sort -nr | grep G; done > /tmp/dir.txt
 
-#Generating HTML file
+#Generating HTML file by echoing HTML tags.
 echo "<html>" >> $html
 echo "<link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">" >> $html
 echo "<body>" >> $html
@@ -82,6 +83,7 @@ echo "<th>Name</th>" >> $html
 echo "</tr>" >> $html
 echo "</thead>" >> $html
 echo "<tr>" >> $html
+#looping through the text data contained inside /tmp/dir.txt.
 while read size name;
 do
   echo "<td>$size</td>" >> $html
