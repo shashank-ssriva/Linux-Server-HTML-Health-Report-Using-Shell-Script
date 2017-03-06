@@ -1,6 +1,6 @@
 #! /bin/bash
 #Author : - Shashank Srivastava
-
+#Date : - 06-March-2017
 #Declaring variables
 #set -x
 os_name=`uname -v | awk {'print$1'} | cut -f2 -d'-'`
@@ -15,6 +15,7 @@ ram_total=`free -m | head -2 | tail -1 | awk {'print$2'}`
 inode=`df -i / | head -2 | tail -1 | awk {'print$5'}`
 html="Server-Health-Report-`hostname`-`date +%y%m%d`-`date +%H%M`.html"
 email_add="change this to yours"
+#redirecting details of disk-space usage to a text file.
 for i in `ls /home`; do du -sh /home/$i/* | sort -nr | grep G; done > /tmp/dir.txt
 #Generating HTML file
 echo "<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">" >> $html
@@ -82,6 +83,7 @@ echo "<th>Name</th>" >> $html
 echo "</tr>" >> $html
 echo "</thead>" >> $html
 echo "<tr>" >> $html
+#looping through the text data contained in /tmp/dir.txt.
 while read size name;
 do
   echo "<td>$size</td>" >> $html
