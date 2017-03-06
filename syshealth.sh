@@ -56,7 +56,7 @@ echo "<th># of Processes</th>" >> $html
 echo "<th>Root FS Usage</th>" >> $html
 echo "<th>Total Size of Root FS</th>" >> $html
 echo "<th>Load Average</th>" >> $html
-echo "<th>Free RAM(in MB)</th>" >> $html
+echo "<th>Used RAM(in MB)</th>" >> $html
 echo "<th>Total RAM(in MB)</th>" >> $html
 echo "<th>iNode Status</th>" >> $html
 echo "</tr>" >> $html
