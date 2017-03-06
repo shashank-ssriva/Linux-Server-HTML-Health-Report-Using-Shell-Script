@@ -9,3 +9,4 @@ Just download the script & make it executable using ``chmod +x syshealth.sh``. N
 
 ## Additional notes
 This script also explains (*I mean, along-with having the script to perform the intended tasks, this script also serves to demonstrate how tags can be used*) how HTML tags can be used inside a shell script. You can modify it to suit your needs.
+You must run this script as root so as to see full disk-usage details. Normal user can't see other home-directories & hence ``du -sh`` won't return accurate details if run as non-root.
