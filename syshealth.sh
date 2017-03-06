@@ -5,7 +5,7 @@
 #Checking if this script is being executed as ROOT. For maintaining proper directory structure, this script must be run from a non root user.
 if [ $EUID != 0 ]
 then
-  echo "Please run this script as root so as to see all details!"
+  echo "Please run this script as root so as to see all details! Better run with sudo."
   exit 1
 fi
 #Declaring variables
