@@ -2,7 +2,7 @@
 #Author : - Shashank Srivastava
 #Date : - 6 March, 2017
 
-#Checking if this script is being executed as ROOT. For maintaining proper directory structure, this script must be run from a non root user.
+#Checking if this script is being executed as ROOT. For maintaining proper directory structure, this script must be run from a root user.
 if [ $EUID != 0 ]
 then
   echo "Please run this script as root so as to see all details! Better run with sudo."
@@ -27,7 +27,7 @@ then
   mkdir ${HOME}/health_reports
 fi
 html="${HOME}/health_reports/Server-Health-Report-`hostname`-`date +%y%m%d`-`date +%H%M`.html"
-email_add="shashanksrivastava@xebia.com"
+email_add="change this to yours"
 for i in `ls /home`; do sudo du -sh /home/$i/* | sort -nr | grep G; done > /tmp/dir.txt
 #Generating HTML file
 echo "<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">" >> $html
