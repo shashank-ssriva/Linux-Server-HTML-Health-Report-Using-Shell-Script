@@ -21,6 +21,7 @@ load_avg=`cat /proc/loadavg  | awk {'print$1,$2,$3'}`
 ram_usage=`free -m | head -2 | tail -1 | awk {'print$3'}`
 ram_total=`free -m | head -2 | tail -1 | awk {'print$2'}`
 inode=`df -i / | head -2 | tail -1 | awk {'print$5'}`
+os_version=`uname -v | cut -f2 -d'~' | awk {'print$1'} | cut -f1 -d'-' | cut -c 1-5`
 #Creating a directory if it doesn't exist to store reports first, for easy maintenance.
 if [ ! -d ${HOME}/health_reports ]
 then
@@ -47,6 +48,7 @@ echo "<table class="pure-table">" >> $html
 echo "<thead>" >> $html
 echo "<tr>" >> $html
 echo "<th>OS Name</th>" >> $html
+echo "<th>OS Version</th>" >> $html
 echo "<th>IP Address</th>" >> $html
 echo "<th>Uptime</th>" >> $html
 echo "</tr>" >> $html
@@ -54,6 +56,7 @@ echo "</thead>" >> $html
 echo "<tbody>" >> $html
 echo "<tr>" >> $html
 echo "<td>$os_name</td>" >> $html
+echo "<td>$os_version</td>" >> $html
 echo "<td>$ip_add</td>" >> $html
 echo "<td>$upt</td>" >> $html
 echo "</tr>" >> $html
